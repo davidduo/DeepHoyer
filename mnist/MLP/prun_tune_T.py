@@ -94,8 +94,7 @@ def train(epochs):
                 p.grad.data = torch.from_numpy(grad_tensor).to(device)
 
             optimizer.step()
-                
-            
+
             if batch_idx % args.log_interval == 0:
                 done = batch_idx * len(data)
                 percentage = 100. * batch_idx / len(train_loader)
@@ -121,6 +120,8 @@ def test():
 
 
 model.load_state_dict(torch.load(args.model+'.pth'))
+
+print("------  MODEL  ------%s\n"%(args.model+'.pth'))
 # Initial training
 print("--- Pruning ---")
 for name, p in model.named_parameters():
