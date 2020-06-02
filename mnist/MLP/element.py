@@ -71,8 +71,9 @@ test_loader = torch.utils.data.DataLoader(
 
 # Define which model to use
 model = LeNet(mask=False).to(device)
-
 print(model)
+
+print(args)
 util.print_model_parameters(model)
 
 # NOTE : `weight_decay` term denotes L2 regularization loss term
@@ -96,41 +97,31 @@ def train(epochs, decay=0, threshold=0.0):
                 reg = 0.0
                 for param in model.parameters():
                     if param.requires_grad and torch.sum(torch.abs(param))>0:
-                        if args.reg_type==1:    
+                        # l1 norm minimizaition
+                        if args.reg_type==1:
                             reg += torch.sum(torch.abs(param))
-                        elif args.reg_type==2:
+                        elif args.reg_type==2:                        # l1/l2 norm minimization
                             reg += torch.sum(torch.abs(param))/torch.sqrt(torch.sum(param**2))
-                        elif args.reg_type==3:
+                        elif args.reg_type==3:                        # (l1/l2)**2 minimization
                             reg += (torch.sum(torch.abs(param))**2)/torch.sum(param**2)
-                        elif args.reg_type==4:    
+                        elif args.reg_type==4:         # (2*l1)/(1+l1)
                             reg += torch.sum(2*torch.abs(param)/(1+torch.abs(param)))
-                        elif args.reg_type==5:
-                            param_ = torch.tensor(param)
-                            param_.requires_grad = False
-                            p = 2.0/3.0
-                            reg += torch.pow(torch.sum(torch.pow(torch.abs(param),2) * torch.pow(torch.abs(param_),p-2)), 1)
-                        elif args.reg_type==6:
-                            #https://www.ece.uvic.ca/~andreas/JournalPapers/JKP-WSL-AA,Improved_Compessive_Sensing_Algorithms,TCASII14.pdf
-                            p = 2.0/3.0
+                        elif args.reg_type==5:         # reweighted l2 -> lp
+                            param_ = param.clone().detach().requires_grad_(False)
                             eps = 1e-6
-                            reg += torch.pow(torch.sum( torch.pow(torch.pow(torch.abs(param),2) + eps), p/2), 1)
-                        elif args.reg_type==7:
-                            param_ = torch.tensor(param)
-                            param_.requires_grad = False
-                            p = 1.0/2.0
-                            reg += torch.pow(torch.sum(torch.pow(torch.abs(param),2) * torch.pow(torch.abs(param_),p-2)), 1)
-                        elif args.reg_type==8:
-                            param_ = torch.tensor(param)
-                            param_.requires_grad = False
-                            p = 1.0/3.0
-                            reg += torch.pow(torch.sum(torch.pow(torch.abs(param),2) * torch.pow(torch.abs(param_),p-2)), 1)
+                            p = 1/2.0
+                            reg += torch.sum(torch.pow(torch.abs(param),2)  * torch.pow(torch.abs(param_) + eps, (p-2.0)/2.0))
+                        elif args.reg_type==6:         # reweighted l1 -> lp
+                            param_ = param.clone().detach().requires_grad_(False)
+                            eps = 1e-6
+                            p = 1/2.0
+                            reg += torch.sum(torch.abs(param)  * torch.pow(torch.abs(param_) + eps, p-1))
+                        #https://www.ece.uvic.ca/~andreas/JournalPapers/JKP-WSL-AA,Improved_Compessive_Sensing_Algorithms,TCASII14.pdf
 
                         else:
                             reg = 0.0         
             total_loss = loss+decay*reg
-                
             total_loss.backward()
-
             optimizer.step()
             
             if batch_idx % args.log_interval == 0:
@@ -164,8 +155,11 @@ print("--- Initial training ---")
 train(args.epochs, decay=args.decay, threshold=0.0)
 accuracy = test()
 torch.save(model.state_dict(), 'saves/elt_'+str(args.decay)+'_'+str(args.reg_type)+'.pth')
-
+print(args.log, f"initial_accuracy {accuracy}")
 util.log(args.log, f"initial_accuracy {accuracy}")
+print("--- Finish training ---")
+
+
 #util.print_nonzeros(model)
 
 
