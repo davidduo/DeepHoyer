@@ -1,0 +1,850 @@
+2020-06-02 01:51:29
+Using CUDA!
+LeNet(
+  (fc1): Linear(in_features=784, out_features=300, bias=True)
+  (fc2): Linear(in_features=300, out_features=100, bias=True)
+  (fc3): Linear(in_features=100, out_features=10, bias=True)
+)
+Param name           Shape                          Type           
+----------------------------------------------------------------------
+fc1.weight           torch.Size([300, 784])         torch.float32  
+fc1.bias             torch.Size([300])              torch.float32  
+fc2.weight           torch.Size([100, 300])         torch.float32  
+fc2.bias             torch.Size([100])              torch.float32  
+fc3.weight           torch.Size([10, 100])          torch.float32  
+fc3.bias             torch.Size([10])               torch.float32  
+Test set: Average loss: 0.2336, Accuracy: 9828/10000 (98.28%)
+--- Initial training ---
+Test set: Average loss: 0.1283, Accuracy: 9627/10000 (96.27%)
+2020-06-02 02:01:33
+Using CUDA!
+LeNet(
+  (fc1): Linear(in_features=784, out_features=300, bias=True)
+  (fc2): Linear(in_features=300, out_features=100, bias=True)
+  (fc3): Linear(in_features=100, out_features=10, bias=True)
+)
+Param name           Shape                          Type           
+----------------------------------------------------------------------
+fc1.weight           torch.Size([300, 784])         torch.float32  
+fc1.bias             torch.Size([300])              torch.float32  
+fc2.weight           torch.Size([100, 300])         torch.float32  
+fc2.bias             torch.Size([100])              torch.float32  
+fc3.weight           torch.Size([10, 100])          torch.float32  
+fc3.bias             torch.Size([10])               torch.float32  
+Test set: Average loss: 0.2336, Accuracy: 9828/10000 (98.28%)
+--- Initial training ---
+Test set: Average loss: 0.1040, Accuracy: 9695/10000 (96.95%)
+2020-06-02 02:10:41
+Using CUDA!
+LeNet(
+  (fc1): Linear(in_features=784, out_features=300, bias=True)
+  (fc2): Linear(in_features=300, out_features=100, bias=True)
+  (fc3): Linear(in_features=100, out_features=10, bias=True)
+)
+Param name           Shape                          Type           
+----------------------------------------------------------------------
+fc1.weight           torch.Size([300, 784])         torch.float32  
+fc1.bias             torch.Size([300])              torch.float32  
+fc2.weight           torch.Size([100, 300])         torch.float32  
+fc2.bias             torch.Size([100])              torch.float32  
+fc3.weight           torch.Size([10, 100])          torch.float32  
+fc3.bias             torch.Size([10])               torch.float32  
+Test set: Average loss: 0.2336, Accuracy: 9828/10000 (98.28%)
+--- Initial training ---
+Test set: Average loss: 0.0766, Accuracy: 9765/10000 (97.65%)
+2020-06-02 02:19:51
+Using CUDA!
+LeNet(
+  (fc1): Linear(in_features=784, out_features=300, bias=True)
+  (fc2): Linear(in_features=300, out_features=100, bias=True)
+  (fc3): Linear(in_features=100, out_features=10, bias=True)
+)
+Param name           Shape                          Type           
+----------------------------------------------------------------------
+fc1.weight           torch.Size([300, 784])         torch.float32  
+fc1.bias             torch.Size([300])              torch.float32  
+fc2.weight           torch.Size([100, 300])         torch.float32  
+fc2.bias             torch.Size([100])              torch.float32  
+fc3.weight           torch.Size([10, 100])          torch.float32  
+fc3.bias             torch.Size([10])               torch.float32  
+Test set: Average loss: 0.2336, Accuracy: 9828/10000 (98.28%)
+--- Initial training ---
+Test set: Average loss: 0.0823, Accuracy: 9795/10000 (97.95%)
+2020-06-02 02:29:03
+Using CUDA!
+--- Pruning ---
+Test set: Average loss: 0.1256, Accuracy: 9638/10000 (96.38%)
+fc1.weight           | nonzeros =    3828 /  235200 (  1.63%) | total_pruned =  231372 | shape = (300, 784)
+fc1.weight           | dim0 =     492 /     784 ( 62.76%) | dim1 =      22 /     300 (  7.33%)
+fc1.bias             | nonzeros =      13 /     300 (  4.33%) | total_pruned =     287 | shape = (300,)
+fc2.weight           | nonzeros =      67 /   30000 (  0.22%) | total_pruned =   29933 | shape = (100, 300)
+fc2.weight           | dim0 =      22 /     300 (  7.33%) | dim1 =      10 /     100 ( 10.00%)
+fc2.bias             | nonzeros =       1 /     100 (  1.00%) | total_pruned =      99 | shape = (100,)
+fc3.weight           | nonzeros =      50 /    1000 (  5.00%) | total_pruned =     950 | shape = (10, 100)
+fc3.weight           | dim0 =      10 /     100 ( 10.00%) | dim1 =      10 /      10 (100.00%)
+fc3.bias             | nonzeros =       0 /      10 (  0.00%) | total_pruned =      10 | shape = (10,)
+alive: 3959, pruned : 262651, total: 266610, Compression rate :      67.34x  ( 98.52% pruned)
+--- Finetuning ---
+Test set: Average loss: 0.1019, Accuracy: 9702/10000 (97.02%)
+2020-06-02 02:33:04
+Using CUDA!
+--- Pruning ---
+Test set: Average loss: 0.0980, Accuracy: 9713/10000 (97.13%)
+fc1.weight           | nonzeros =    5713 /  235200 (  2.43%) | total_pruned =  229487 | shape = (300, 784)
+fc1.weight           | dim0 =     536 /     784 ( 68.37%) | dim1 =      29 /     300 (  9.67%)
+fc1.bias             | nonzeros =      20 /     300 (  6.67%) | total_pruned =     280 | shape = (300,)
+fc2.weight           | nonzeros =     205 /   30000 (  0.68%) | total_pruned =   29795 | shape = (100, 300)
+fc2.weight           | dim0 =      29 /     300 (  9.67%) | dim1 =      15 /     100 ( 15.00%)
+fc2.bias             | nonzeros =       6 /     100 (  6.00%) | total_pruned =      94 | shape = (100,)
+fc3.weight           | nonzeros =      69 /    1000 (  6.90%) | total_pruned =     931 | shape = (10, 100)
+fc3.weight           | dim0 =      15 /     100 ( 15.00%) | dim1 =      10 /      10 (100.00%)
+fc3.bias             | nonzeros =       1 /      10 ( 10.00%) | total_pruned =       9 | shape = (10,)
+alive: 6014, pruned : 260596, total: 266610, Compression rate :      44.33x  ( 97.74% pruned)
+--- Finetuning ---
+Test set: Average loss: 0.0930, Accuracy: 9737/10000 (97.37%)
+2020-06-02 02:37:08
+Using CUDA!
+--- Pruning ---
+Test set: Average loss: 0.0749, Accuracy: 9765/10000 (97.65%)
+fc1.weight           | nonzeros =   14331 /  235200 (  6.09%) | total_pruned =  220869 | shape = (300, 784)
+fc1.weight           | dim0 =     558 /     784 ( 71.17%) | dim1 =      52 /     300 ( 17.33%)
+fc1.bias             | nonzeros =      33 /     300 ( 11.00%) | total_pruned =     267 | shape = (300,)
+fc2.weight           | nonzeros =     992 /   30000 (  3.31%) | total_pruned =   29008 | shape = (100, 300)
+fc2.weight           | dim0 =      53 /     300 ( 17.67%) | dim1 =      28 /     100 ( 28.00%)
+fc2.bias             | nonzeros =      19 /     100 ( 19.00%) | total_pruned =      81 | shape = (100,)
+fc3.weight           | nonzeros =     176 /    1000 ( 17.60%) | total_pruned =     824 | shape = (10, 100)
+fc3.weight           | dim0 =      28 /     100 ( 28.00%) | dim1 =      10 /      10 (100.00%)
+fc3.bias             | nonzeros =       1 /      10 ( 10.00%) | total_pruned =       9 | shape = (10,)
+alive: 15552, pruned : 251058, total: 266610, Compression rate :      17.14x  ( 94.17% pruned)
+--- Finetuning ---
+Test set: Average loss: 0.1288, Accuracy: 9819/10000 (98.19%)
+2020-06-02 02:41:16
+Using CUDA!
+2020-06-02 02:41:19
+2020-06-02 02:41:19
+Using CUDA!
+LeNet(
+  (fc1): Linear(in_features=784, out_features=300, bias=True)
+  (fc2): Linear(in_features=300, out_features=100, bias=True)
+  (fc3): Linear(in_features=100, out_features=10, bias=True)
+)
+Param name           Shape                          Type           
+----------------------------------------------------------------------
+fc1.weight           torch.Size([300, 784])         torch.float32  
+fc1.bias             torch.Size([300])              torch.float32  
+fc2.weight           torch.Size([100, 300])         torch.float32  
+fc2.bias             torch.Size([100])              torch.float32  
+fc3.weight           torch.Size([10, 100])          torch.float32  
+fc3.bias             torch.Size([10])               torch.float32  
+Test set: Average loss: 0.2336, Accuracy: 9828/10000 (98.28%)
+--- Initial training ---
+Test set: Average loss: 0.0899, Accuracy: 9859/10000 (98.59%)
+2020-06-02 02:53:13
+Using CUDA!
+LeNet(
+  (fc1): Linear(in_features=784, out_features=300, bias=True)
+  (fc2): Linear(in_features=300, out_features=100, bias=True)
+  (fc3): Linear(in_features=100, out_features=10, bias=True)
+)
+Param name           Shape                          Type           
+----------------------------------------------------------------------
+fc1.weight           torch.Size([300, 784])         torch.float32  
+fc1.bias             torch.Size([300])              torch.float32  
+fc2.weight           torch.Size([100, 300])         torch.float32  
+fc2.bias             torch.Size([100])              torch.float32  
+fc3.weight           torch.Size([10, 100])          torch.float32  
+fc3.bias             torch.Size([10])               torch.float32  
+Test set: Average loss: 0.2336, Accuracy: 9828/10000 (98.28%)
+--- Initial training ---
+Test set: Average loss: 0.1014, Accuracy: 9838/10000 (98.38%)
+2020-06-02 03:05:02
+Using CUDA!
+LeNet(
+  (fc1): Linear(in_features=784, out_features=300, bias=True)
+  (fc2): Linear(in_features=300, out_features=100, bias=True)
+  (fc3): Linear(in_features=100, out_features=10, bias=True)
+)
+Param name           Shape                          Type           
+----------------------------------------------------------------------
+fc1.weight           torch.Size([300, 784])         torch.float32  
+fc1.bias             torch.Size([300])              torch.float32  
+fc2.weight           torch.Size([100, 300])         torch.float32  
+fc2.bias             torch.Size([100])              torch.float32  
+fc3.weight           torch.Size([10, 100])          torch.float32  
+fc3.bias             torch.Size([10])               torch.float32  
+Test set: Average loss: 0.2336, Accuracy: 9828/10000 (98.28%)
+--- Initial training ---
+Test set: Average loss: 0.1974, Accuracy: 9841/10000 (98.41%)
+2020-06-02 03:16:54
+Using CUDA!
+LeNet(
+  (fc1): Linear(in_features=784, out_features=300, bias=True)
+  (fc2): Linear(in_features=300, out_features=100, bias=True)
+  (fc3): Linear(in_features=100, out_features=10, bias=True)
+)
+Param name           Shape                          Type           
+----------------------------------------------------------------------
+fc1.weight           torch.Size([300, 784])         torch.float32  
+fc1.bias             torch.Size([300])              torch.float32  
+fc2.weight           torch.Size([100, 300])         torch.float32  
+fc2.bias             torch.Size([100])              torch.float32  
+fc3.weight           torch.Size([10, 100])          torch.float32  
+fc3.bias             torch.Size([10])               torch.float32  
+Test set: Average loss: 0.2336, Accuracy: 9828/10000 (98.28%)
+--- Initial training ---
+Test set: Average loss: 0.1520, Accuracy: 9842/10000 (98.42%)
+2020-06-02 03:28:46
+Using CUDA!
+--- Pruning ---
+Test set: Average loss: 0.0898, Accuracy: 9860/10000 (98.60%)
+fc1.weight           | nonzeros =   63589 /  235200 ( 27.04%) | total_pruned =  171611 | shape = (300, 784)
+fc1.weight           | dim0 =     617 /     784 ( 78.70%) | dim1 =     283 /     300 ( 94.33%)
+fc1.bias             | nonzeros =       6 /     300 (  2.00%) | total_pruned =     294 | shape = (300,)
+fc2.weight           | nonzeros =    6045 /   30000 ( 20.15%) | total_pruned =   23955 | shape = (100, 300)
+fc2.weight           | dim0 =     271 /     300 ( 90.33%) | dim1 =      82 /     100 ( 82.00%)
+fc2.bias             | nonzeros =       1 /     100 (  1.00%) | total_pruned =      99 | shape = (100,)
+fc3.weight           | nonzeros =     260 /    1000 ( 26.00%) | total_pruned =     740 | shape = (10, 100)
+fc3.weight           | dim0 =      43 /     100 ( 43.00%) | dim1 =      10 /      10 (100.00%)
+fc3.bias             | nonzeros =       1 /      10 ( 10.00%) | total_pruned =       9 | shape = (10,)
+alive: 69902, pruned : 196708, total: 266610, Compression rate :       3.81x  ( 73.78% pruned)
+--- Finetuning ---
+Test set: Average loss: 0.2298, Accuracy: 9841/10000 (98.41%)
+2020-06-02 03:33:08
+Using CUDA!
+--- Pruning ---
+Test set: Average loss: 0.1016, Accuracy: 9839/10000 (98.39%)
+fc1.weight           | nonzeros =  106368 /  235200 ( 45.22%) | total_pruned =  128832 | shape = (300, 784)
+fc1.weight           | dim0 =     644 /     784 ( 82.14%) | dim1 =     300 /     300 (100.00%)
+fc1.bias             | nonzeros =     106 /     300 ( 35.33%) | total_pruned =     194 | shape = (300,)
+fc2.weight           | nonzeros =   13179 /   30000 ( 43.93%) | total_pruned =   16821 | shape = (100, 300)
+fc2.weight           | dim0 =     298 /     300 ( 99.33%) | dim1 =      98 /     100 ( 98.00%)
+fc2.bias             | nonzeros =      17 /     100 ( 17.00%) | total_pruned =      83 | shape = (100,)
+fc3.weight           | nonzeros =     562 /    1000 ( 56.20%) | total_pruned =     438 | shape = (10, 100)
+fc3.weight           | dim0 =      77 /     100 ( 77.00%) | dim1 =      10 /      10 (100.00%)
+fc3.bias             | nonzeros =       1 /      10 ( 10.00%) | total_pruned =       9 | shape = (10,)
+alive: 120233, pruned : 146377, total: 266610, Compression rate :       2.22x  ( 54.90% pruned)
+--- Finetuning ---
+Test set: Average loss: 0.2129, Accuracy: 9839/10000 (98.39%)
+2020-06-02 03:37:41
+Using CUDA!
+--- Pruning ---
+Test set: Average loss: 0.1974, Accuracy: 9841/10000 (98.41%)
+fc1.weight           | nonzeros =  114245 /  235200 ( 48.57%) | total_pruned =  120955 | shape = (300, 784)
+fc1.weight           | dim0 =     633 /     784 ( 80.74%) | dim1 =     300 /     300 (100.00%)
+fc1.bias             | nonzeros =     198 /     300 ( 66.00%) | total_pruned =     102 | shape = (300,)
+fc2.weight           | nonzeros =   19952 /   30000 ( 66.51%) | total_pruned =   10048 | shape = (100, 300)
+fc2.weight           | dim0 =     298 /     300 ( 99.33%) | dim1 =     100 /     100 (100.00%)
+fc2.bias             | nonzeros =      24 /     100 ( 24.00%) | total_pruned =      76 | shape = (100,)
+fc3.weight           | nonzeros =     784 /    1000 ( 78.40%) | total_pruned =     216 | shape = (10, 100)
+fc3.weight           | dim0 =      94 /     100 ( 94.00%) | dim1 =      10 /      10 (100.00%)
+fc3.bias             | nonzeros =       2 /      10 ( 20.00%) | total_pruned =       8 | shape = (10,)
+alive: 135205, pruned : 131405, total: 266610, Compression rate :       1.97x  ( 49.29% pruned)
+--- Finetuning ---
+Test set: Average loss: 0.2965, Accuracy: 9840/10000 (98.40%)
+2020-06-02 03:42:07
+Using CUDA!
+2020-06-02 03:42:10
+2020-06-02 03:42:10
+Using CUDA!
+LeNet(
+  (fc1): Linear(in_features=784, out_features=300, bias=True)
+  (fc2): Linear(in_features=300, out_features=100, bias=True)
+  (fc3): Linear(in_features=100, out_features=10, bias=True)
+)
+Param name           Shape                          Type           
+----------------------------------------------------------------------
+fc1.weight           torch.Size([300, 784])         torch.float32  
+fc1.bias             torch.Size([300])              torch.float32  
+fc2.weight           torch.Size([100, 300])         torch.float32  
+fc2.bias             torch.Size([100])              torch.float32  
+fc3.weight           torch.Size([10, 100])          torch.float32  
+fc3.bias             torch.Size([10])               torch.float32  
+Test set: Average loss: 0.2336, Accuracy: 9828/10000 (98.28%)
+--- Initial training ---
+Test set: Average loss: 0.1162, Accuracy: 9779/10000 (97.79%)
+2020-06-02 03:54:04
+Using CUDA!
+LeNet(
+  (fc1): Linear(in_features=784, out_features=300, bias=True)
+  (fc2): Linear(in_features=300, out_features=100, bias=True)
+  (fc3): Linear(in_features=100, out_features=10, bias=True)
+)
+Param name           Shape                          Type           
+----------------------------------------------------------------------
+fc1.weight           torch.Size([300, 784])         torch.float32  
+fc1.bias             torch.Size([300])              torch.float32  
+fc2.weight           torch.Size([100, 300])         torch.float32  
+fc2.bias             torch.Size([100])              torch.float32  
+fc3.weight           torch.Size([10, 100])          torch.float32  
+fc3.bias             torch.Size([10])               torch.float32  
+Test set: Average loss: 0.2336, Accuracy: 9828/10000 (98.28%)
+--- Initial training ---
+Test set: Average loss: 0.0949, Accuracy: 9830/10000 (98.30%)
+2020-06-02 04:05:58
+Using CUDA!
+LeNet(
+  (fc1): Linear(in_features=784, out_features=300, bias=True)
+  (fc2): Linear(in_features=300, out_features=100, bias=True)
+  (fc3): Linear(in_features=100, out_features=10, bias=True)
+)
+Param name           Shape                          Type           
+----------------------------------------------------------------------
+fc1.weight           torch.Size([300, 784])         torch.float32  
+fc1.bias             torch.Size([300])              torch.float32  
+fc2.weight           torch.Size([100, 300])         torch.float32  
+fc2.bias             torch.Size([100])              torch.float32  
+fc3.weight           torch.Size([10, 100])          torch.float32  
+fc3.bias             torch.Size([10])               torch.float32  
+Test set: Average loss: 0.2336, Accuracy: 9828/10000 (98.28%)
+--- Initial training ---
+Test set: Average loss: 0.0941, Accuracy: 9850/10000 (98.50%)
+2020-06-02 04:17:58
+Using CUDA!
+LeNet(
+  (fc1): Linear(in_features=784, out_features=300, bias=True)
+  (fc2): Linear(in_features=300, out_features=100, bias=True)
+  (fc3): Linear(in_features=100, out_features=10, bias=True)
+)
+Param name           Shape                          Type           
+----------------------------------------------------------------------
+fc1.weight           torch.Size([300, 784])         torch.float32  
+fc1.bias             torch.Size([300])              torch.float32  
+fc2.weight           torch.Size([100, 300])         torch.float32  
+fc2.bias             torch.Size([100])              torch.float32  
+fc3.weight           torch.Size([10, 100])          torch.float32  
+fc3.bias             torch.Size([10])               torch.float32  
+Test set: Average loss: 0.2336, Accuracy: 9828/10000 (98.28%)
+--- Initial training ---
+Test set: Average loss: 0.1174, Accuracy: 9827/10000 (98.27%)
+2020-06-02 04:30:00
+Using CUDA!
+--- Pruning ---
+Test set: Average loss: 0.1156, Accuracy: 9779/10000 (97.79%)
+fc1.weight           | nonzeros =   26965 /  235200 ( 11.46%) | total_pruned =  208235 | shape = (300, 784)
+fc1.weight           | dim0 =     579 /     784 ( 73.85%) | dim1 =     186 /     300 ( 62.00%)
+fc1.bias             | nonzeros =      89 /     300 ( 29.67%) | total_pruned =     211 | shape = (300,)
+fc2.weight           | nonzeros =    3104 /   30000 ( 10.35%) | total_pruned =   26896 | shape = (100, 300)
+fc2.weight           | dim0 =     194 /     300 ( 64.67%) | dim1 =      61 /     100 ( 61.00%)
+fc2.bias             | nonzeros =      25 /     100 ( 25.00%) | total_pruned =      75 | shape = (100,)
+fc3.weight           | nonzeros =     247 /    1000 ( 24.70%) | total_pruned =     753 | shape = (10, 100)
+fc3.weight           | dim0 =      35 /     100 ( 35.00%) | dim1 =      10 /      10 (100.00%)
+fc3.bias             | nonzeros =       1 /      10 ( 10.00%) | total_pruned =       9 | shape = (10,)
+alive: 30431, pruned : 236179, total: 266610, Compression rate :       8.76x  ( 88.59% pruned)
+--- Finetuning ---
+Test set: Average loss: 0.2232, Accuracy: 9803/10000 (98.03%)
+2020-06-02 04:34:14
+Using CUDA!
+--- Pruning ---
+Test set: Average loss: 0.0948, Accuracy: 9828/10000 (98.28%)
+fc1.weight           | nonzeros =   46351 /  235200 ( 19.71%) | total_pruned =  188849 | shape = (300, 784)
+fc1.weight           | dim0 =     610 /     784 ( 77.81%) | dim1 =     275 /     300 ( 91.67%)
+fc1.bias             | nonzeros =     151 /     300 ( 50.33%) | total_pruned =     149 | shape = (300,)
+fc2.weight           | nonzeros =    5882 /   30000 ( 19.61%) | total_pruned =   24118 | shape = (100, 300)
+fc2.weight           | dim0 =     267 /     300 ( 89.00%) | dim1 =      68 /     100 ( 68.00%)
+fc2.bias             | nonzeros =      29 /     100 ( 29.00%) | total_pruned =      71 | shape = (100,)
+fc3.weight           | nonzeros =     302 /    1000 ( 30.20%) | total_pruned =     698 | shape = (10, 100)
+fc3.weight           | dim0 =      40 /     100 ( 40.00%) | dim1 =      10 /      10 (100.00%)
+fc3.bias             | nonzeros =       2 /      10 ( 20.00%) | total_pruned =       8 | shape = (10,)
+alive: 52717, pruned : 213893, total: 266610, Compression rate :       5.06x  ( 80.23% pruned)
+--- Finetuning ---
+Test set: Average loss: 0.2187, Accuracy: 9830/10000 (98.30%)
+2020-06-02 04:38:37
+Using CUDA!
+--- Pruning ---
+Test set: Average loss: 0.0941, Accuracy: 9851/10000 (98.51%)
+fc1.weight           | nonzeros =   61916 /  235200 ( 26.32%) | total_pruned =  173284 | shape = (300, 784)
+fc1.weight           | dim0 =     616 /     784 ( 78.57%) | dim1 =     297 /     300 ( 99.00%)
+fc1.bias             | nonzeros =     215 /     300 ( 71.67%) | total_pruned =      85 | shape = (300,)
+fc2.weight           | nonzeros =   11277 /   30000 ( 37.59%) | total_pruned =   18723 | shape = (100, 300)
+fc2.weight           | dim0 =     292 /     300 ( 97.33%) | dim1 =      98 /     100 ( 98.00%)
+fc2.bias             | nonzeros =      59 /     100 ( 59.00%) | total_pruned =      41 | shape = (100,)
+fc3.weight           | nonzeros =     635 /    1000 ( 63.50%) | total_pruned =     365 | shape = (10, 100)
+fc3.weight           | dim0 =      92 /     100 ( 92.00%) | dim1 =      10 /      10 (100.00%)
+fc3.bias             | nonzeros =       1 /      10 ( 10.00%) | total_pruned =       9 | shape = (10,)
+alive: 74103, pruned : 192507, total: 266610, Compression rate :       3.60x  ( 72.21% pruned)
+--- Finetuning ---
+Test set: Average loss: 0.2045, Accuracy: 9852/10000 (98.52%)
+2020-06-02 04:43:03
+Using CUDA!
+2020-06-02 04:43:06
+2020-06-02 04:43:06
+Using CUDA!
+LeNet(
+  (fc1): Linear(in_features=784, out_features=300, bias=True)
+  (fc2): Linear(in_features=300, out_features=100, bias=True)
+  (fc3): Linear(in_features=100, out_features=10, bias=True)
+)
+Param name           Shape                          Type           
+----------------------------------------------------------------------
+fc1.weight           torch.Size([300, 784])         torch.float32  
+fc1.bias             torch.Size([300])              torch.float32  
+fc2.weight           torch.Size([100, 300])         torch.float32  
+fc2.bias             torch.Size([100])              torch.float32  
+fc3.weight           torch.Size([10, 100])          torch.float32  
+fc3.bias             torch.Size([10])               torch.float32  
+Test set: Average loss: 0.2336, Accuracy: 9828/10000 (98.28%)
+--- Initial training ---
+Test set: Average loss: 0.1533, Accuracy: 9555/10000 (95.55%)
+2020-06-02 04:54:36
+Using CUDA!
+LeNet(
+  (fc1): Linear(in_features=784, out_features=300, bias=True)
+  (fc2): Linear(in_features=300, out_features=100, bias=True)
+  (fc3): Linear(in_features=100, out_features=10, bias=True)
+)
+Param name           Shape                          Type           
+----------------------------------------------------------------------
+fc1.weight           torch.Size([300, 784])         torch.float32  
+fc1.bias             torch.Size([300])              torch.float32  
+fc2.weight           torch.Size([100, 300])         torch.float32  
+fc2.bias             torch.Size([100])              torch.float32  
+fc3.weight           torch.Size([10, 100])          torch.float32  
+fc3.bias             torch.Size([10])               torch.float32  
+Test set: Average loss: 0.2336, Accuracy: 9828/10000 (98.28%)
+--- Initial training ---
+Test set: Average loss: 0.1355, Accuracy: 9597/10000 (95.97%)
+2020-06-02 05:06:07
+Using CUDA!
+LeNet(
+  (fc1): Linear(in_features=784, out_features=300, bias=True)
+  (fc2): Linear(in_features=300, out_features=100, bias=True)
+  (fc3): Linear(in_features=100, out_features=10, bias=True)
+)
+Param name           Shape                          Type           
+----------------------------------------------------------------------
+fc1.weight           torch.Size([300, 784])         torch.float32  
+fc1.bias             torch.Size([300])              torch.float32  
+fc2.weight           torch.Size([100, 300])         torch.float32  
+fc2.bias             torch.Size([100])              torch.float32  
+fc3.weight           torch.Size([10, 100])          torch.float32  
+fc3.bias             torch.Size([10])               torch.float32  
+Test set: Average loss: 0.2336, Accuracy: 9828/10000 (98.28%)
+--- Initial training ---
+Test set: Average loss: 0.0912, Accuracy: 9752/10000 (97.52%)
+2020-06-02 05:17:38
+Using CUDA!
+LeNet(
+  (fc1): Linear(in_features=784, out_features=300, bias=True)
+  (fc2): Linear(in_features=300, out_features=100, bias=True)
+  (fc3): Linear(in_features=100, out_features=10, bias=True)
+)
+Param name           Shape                          Type           
+----------------------------------------------------------------------
+fc1.weight           torch.Size([300, 784])         torch.float32  
+fc1.bias             torch.Size([300])              torch.float32  
+fc2.weight           torch.Size([100, 300])         torch.float32  
+fc2.bias             torch.Size([100])              torch.float32  
+fc3.weight           torch.Size([10, 100])          torch.float32  
+fc3.bias             torch.Size([10])               torch.float32  
+Test set: Average loss: 0.2336, Accuracy: 9828/10000 (98.28%)
+--- Initial training ---
+Test set: Average loss: 0.0920, Accuracy: 9796/10000 (97.96%)
+2020-06-02 05:29:07
+Using CUDA!
+--- Pruning ---
+Test set: Average loss: 0.1446, Accuracy: 9599/10000 (95.99%)
+fc1.weight           | nonzeros =    3148 /  235200 (  1.34%) | total_pruned =  232052 | shape = (300, 784)
+fc1.weight           | dim0 =     493 /     784 ( 62.88%) | dim1 =      22 /     300 (  7.33%)
+fc1.bias             | nonzeros =      12 /     300 (  4.00%) | total_pruned =     288 | shape = (300,)
+fc2.weight           | nonzeros =      50 /   30000 (  0.17%) | total_pruned =   29950 | shape = (100, 300)
+fc2.weight           | dim0 =      22 /     300 (  7.33%) | dim1 =      18 /     100 ( 18.00%)
+fc2.bias             | nonzeros =       2 /     100 (  2.00%) | total_pruned =      98 | shape = (100,)
+fc3.weight           | nonzeros =      54 /    1000 (  5.40%) | total_pruned =     946 | shape = (10, 100)
+fc3.weight           | dim0 =      18 /     100 ( 18.00%) | dim1 =      10 /      10 (100.00%)
+fc3.bias             | nonzeros =       0 /      10 (  0.00%) | total_pruned =      10 | shape = (10,)
+alive: 3266, pruned : 263344, total: 266610, Compression rate :      81.63x  ( 98.77% pruned)
+--- Finetuning ---
+Test set: Average loss: 0.1187, Accuracy: 9655/10000 (96.55%)
+2020-06-02 05:33:09
+Using CUDA!
+--- Pruning ---
+Test set: Average loss: 0.1233, Accuracy: 9633/10000 (96.33%)
+fc1.weight           | nonzeros =    4460 /  235200 (  1.90%) | total_pruned =  230740 | shape = (300, 784)
+fc1.weight           | dim0 =     521 /     784 ( 66.45%) | dim1 =      26 /     300 (  8.67%)
+fc1.bias             | nonzeros =      15 /     300 (  5.00%) | total_pruned =     285 | shape = (300,)
+fc2.weight           | nonzeros =     138 /   30000 (  0.46%) | total_pruned =   29862 | shape = (100, 300)
+fc2.weight           | dim0 =      26 /     300 (  8.67%) | dim1 =      21 /     100 ( 21.00%)
+fc2.bias             | nonzeros =       2 /     100 (  2.00%) | total_pruned =      98 | shape = (100,)
+fc3.weight           | nonzeros =      66 /    1000 (  6.60%) | total_pruned =     934 | shape = (10, 100)
+fc3.weight           | dim0 =      21 /     100 ( 21.00%) | dim1 =      10 /      10 (100.00%)
+fc3.bias             | nonzeros =       0 /      10 (  0.00%) | total_pruned =      10 | shape = (10,)
+alive: 4681, pruned : 261929, total: 266610, Compression rate :      56.96x  ( 98.24% pruned)
+--- Finetuning ---
+Test set: Average loss: 0.1057, Accuracy: 9703/10000 (97.03%)
+2020-06-02 05:37:14
+Using CUDA!
+--- Pruning ---
+Test set: Average loss: 0.0870, Accuracy: 9764/10000 (97.64%)
+fc1.weight           | nonzeros =   11022 /  235200 (  4.69%) | total_pruned =  224178 | shape = (300, 784)
+fc1.weight           | dim0 =     542 /     784 ( 69.13%) | dim1 =      56 /     300 ( 18.67%)
+fc1.bias             | nonzeros =      27 /     300 (  9.00%) | total_pruned =     273 | shape = (300,)
+fc2.weight           | nonzeros =    1177 /   30000 (  3.92%) | total_pruned =   28823 | shape = (100, 300)
+fc2.weight           | dim0 =      56 /     300 ( 18.67%) | dim1 =      39 /     100 ( 39.00%)
+fc2.bias             | nonzeros =      13 /     100 ( 13.00%) | total_pruned =      87 | shape = (100,)
+fc3.weight           | nonzeros =     164 /    1000 ( 16.40%) | total_pruned =     836 | shape = (10, 100)
+fc3.weight           | dim0 =      39 /     100 ( 39.00%) | dim1 =      10 /      10 (100.00%)
+fc3.bias             | nonzeros =       1 /      10 ( 10.00%) | total_pruned =       9 | shape = (10,)
+alive: 12404, pruned : 254206, total: 266610, Compression rate :      21.49x  ( 95.35% pruned)
+--- Finetuning ---
+Test set: Average loss: 0.1545, Accuracy: 9796/10000 (97.96%)
+2020-06-02 05:41:24
+Using CUDA!
+2020-06-02 05:41:26
+2020-06-02 05:41:26
+Using CUDA!
+LeNet(
+  (fc1): Linear(in_features=784, out_features=300, bias=True)
+  (fc2): Linear(in_features=300, out_features=100, bias=True)
+  (fc3): Linear(in_features=100, out_features=10, bias=True)
+)
+Param name           Shape                          Type           
+----------------------------------------------------------------------
+fc1.weight           torch.Size([300, 784])         torch.float32  
+fc1.bias             torch.Size([300])              torch.float32  
+fc2.weight           torch.Size([100, 300])         torch.float32  
+fc2.bias             torch.Size([100])              torch.float32  
+fc3.weight           torch.Size([10, 100])          torch.float32  
+fc3.bias             torch.Size([10])               torch.float32  
+Test set: Average loss: 0.2336, Accuracy: 9828/10000 (98.28%)
+--- Initial training ---
+Test set: Average loss: 0.2699, Accuracy: 9232/10000 (92.32%)
+2020-06-02 05:53:22
+Using CUDA!
+LeNet(
+  (fc1): Linear(in_features=784, out_features=300, bias=True)
+  (fc2): Linear(in_features=300, out_features=100, bias=True)
+  (fc3): Linear(in_features=100, out_features=10, bias=True)
+)
+Param name           Shape                          Type           
+----------------------------------------------------------------------
+fc1.weight           torch.Size([300, 784])         torch.float32  
+fc1.bias             torch.Size([300])              torch.float32  
+fc2.weight           torch.Size([100, 300])         torch.float32  
+fc2.bias             torch.Size([100])              torch.float32  
+fc3.weight           torch.Size([10, 100])          torch.float32  
+fc3.bias             torch.Size([10])               torch.float32  
+Test set: Average loss: 0.2336, Accuracy: 9828/10000 (98.28%)
+--- Initial training ---
+Test set: Average loss: 0.2061, Accuracy: 9407/10000 (94.07%)
+2020-06-02 06:05:13
+Using CUDA!
+LeNet(
+  (fc1): Linear(in_features=784, out_features=300, bias=True)
+  (fc2): Linear(in_features=300, out_features=100, bias=True)
+  (fc3): Linear(in_features=100, out_features=10, bias=True)
+)
+Param name           Shape                          Type           
+----------------------------------------------------------------------
+fc1.weight           torch.Size([300, 784])         torch.float32  
+fc1.bias             torch.Size([300])              torch.float32  
+fc2.weight           torch.Size([100, 300])         torch.float32  
+fc2.bias             torch.Size([100])              torch.float32  
+fc3.weight           torch.Size([10, 100])          torch.float32  
+fc3.bias             torch.Size([10])               torch.float32  
+Test set: Average loss: 0.2336, Accuracy: 9828/10000 (98.28%)
+--- Initial training ---
+Test set: Average loss: 0.0932, Accuracy: 9723/10000 (97.23%)
+2020-06-02 06:17:14
+Using CUDA!
+LeNet(
+  (fc1): Linear(in_features=784, out_features=300, bias=True)
+  (fc2): Linear(in_features=300, out_features=100, bias=True)
+  (fc3): Linear(in_features=100, out_features=10, bias=True)
+)
+Param name           Shape                          Type           
+----------------------------------------------------------------------
+fc1.weight           torch.Size([300, 784])         torch.float32  
+fc1.bias             torch.Size([300])              torch.float32  
+fc2.weight           torch.Size([100, 300])         torch.float32  
+fc2.bias             torch.Size([100])              torch.float32  
+fc3.weight           torch.Size([10, 100])          torch.float32  
+fc3.bias             torch.Size([10])               torch.float32  
+Test set: Average loss: 0.2336, Accuracy: 9828/10000 (98.28%)
+--- Initial training ---
+Test set: Average loss: 0.0924, Accuracy: 9727/10000 (97.27%)
+2020-06-02 06:29:05
+Using CUDA!
+--- Pruning ---
+Test set: Average loss: 0.2668, Accuracy: 9266/10000 (92.66%)
+fc1.weight           | nonzeros =    2541 /  235200 (  1.08%) | total_pruned =  232659 | shape = (300, 784)
+fc1.weight           | dim0 =     757 /     784 ( 96.56%) | dim1 =     300 /     300 (100.00%)
+fc1.bias             | nonzeros =       9 /     300 (  3.00%) | total_pruned =     291 | shape = (300,)
+fc2.weight           | nonzeros =     296 /   30000 (  0.99%) | total_pruned =   29704 | shape = (100, 300)
+fc2.weight           | dim0 =     177 /     300 ( 59.00%) | dim1 =      97 /     100 ( 97.00%)
+fc2.bias             | nonzeros =       2 /     100 (  2.00%) | total_pruned =      98 | shape = (100,)
+fc3.weight           | nonzeros =      44 /    1000 (  4.40%) | total_pruned =     956 | shape = (10, 100)
+fc3.weight           | dim0 =      24 /     100 ( 24.00%) | dim1 =      10 /      10 (100.00%)
+fc3.bias             | nonzeros =       0 /      10 (  0.00%) | total_pruned =      10 | shape = (10,)
+alive: 2892, pruned : 263718, total: 266610, Compression rate :      92.19x  ( 98.92% pruned)
+--- Finetuning ---
+Test set: Average loss: 0.2186, Accuracy: 9379/10000 (93.79%)
+2020-06-02 06:33:18
+Using CUDA!
+--- Pruning ---
+Test set: Average loss: 0.1947, Accuracy: 9448/10000 (94.48%)
+fc1.weight           | nonzeros =    2640 /  235200 (  1.12%) | total_pruned =  232560 | shape = (300, 784)
+fc1.weight           | dim0 =     739 /     784 ( 94.26%) | dim1 =     300 /     300 (100.00%)
+fc1.bias             | nonzeros =       7 /     300 (  2.33%) | total_pruned =     293 | shape = (300,)
+fc2.weight           | nonzeros =     324 /   30000 (  1.08%) | total_pruned =   29676 | shape = (100, 300)
+fc2.weight           | dim0 =     212 /     300 ( 70.67%) | dim1 =      98 /     100 ( 98.00%)
+fc2.bias             | nonzeros =       3 /     100 (  3.00%) | total_pruned =      97 | shape = (100,)
+fc3.weight           | nonzeros =      46 /    1000 (  4.60%) | total_pruned =     954 | shape = (10, 100)
+fc3.weight           | dim0 =      20 /     100 ( 20.00%) | dim1 =      10 /      10 (100.00%)
+fc3.bias             | nonzeros =       0 /      10 (  0.00%) | total_pruned =      10 | shape = (10,)
+alive: 3020, pruned : 263590, total: 266610, Compression rate :      88.28x  ( 98.87% pruned)
+--- Finetuning ---
+Test set: Average loss: 0.1623, Accuracy: 9503/10000 (95.03%)
+2020-06-02 06:37:29
+Using CUDA!
+--- Pruning ---
+Test set: Average loss: 0.0864, Accuracy: 9740/10000 (97.40%)
+fc1.weight           | nonzeros =    4585 /  235200 (  1.95%) | total_pruned =  230615 | shape = (300, 784)
+fc1.weight           | dim0 =     759 /     784 ( 96.81%) | dim1 =     300 /     300 (100.00%)
+fc1.bias             | nonzeros =      12 /     300 (  4.00%) | total_pruned =     288 | shape = (300,)
+fc2.weight           | nonzeros =     433 /   30000 (  1.44%) | total_pruned =   29567 | shape = (100, 300)
+fc2.weight           | dim0 =     205 /     300 ( 68.33%) | dim1 =      98 /     100 ( 98.00%)
+fc2.bias             | nonzeros =       4 /     100 (  4.00%) | total_pruned =      96 | shape = (100,)
+fc3.weight           | nonzeros =      85 /    1000 (  8.50%) | total_pruned =     915 | shape = (10, 100)
+fc3.weight           | dim0 =      29 /     100 ( 29.00%) | dim1 =      10 /      10 (100.00%)
+fc3.bias             | nonzeros =       1 /      10 ( 10.00%) | total_pruned =       9 | shape = (10,)
+alive: 5120, pruned : 261490, total: 266610, Compression rate :      52.07x  ( 98.08% pruned)
+--- Finetuning ---
+Test set: Average loss: 0.0806, Accuracy: 9757/10000 (97.57%)
+2020-06-02 06:41:42
+Using CUDA!
+2020-06-02 06:41:45
+2020-06-02 06:41:45
+Using CUDA!
+LeNet(
+  (fc1): Linear(in_features=784, out_features=300, bias=True)
+  (fc2): Linear(in_features=300, out_features=100, bias=True)
+  (fc3): Linear(in_features=100, out_features=10, bias=True)
+)
+Param name           Shape                          Type           
+----------------------------------------------------------------------
+fc1.weight           torch.Size([300, 784])         torch.float32  
+fc1.bias             torch.Size([300])              torch.float32  
+fc2.weight           torch.Size([100, 300])         torch.float32  
+fc2.bias             torch.Size([100])              torch.float32  
+fc3.weight           torch.Size([10, 100])          torch.float32  
+fc3.bias             torch.Size([10])               torch.float32  
+Test set: Average loss: 0.2336, Accuracy: 9828/10000 (98.28%)
+--- Initial training ---
+2020-06-02 06:41:48
+Using CUDA!
+LeNet(
+  (fc1): Linear(in_features=784, out_features=300, bias=True)
+  (fc2): Linear(in_features=300, out_features=100, bias=True)
+  (fc3): Linear(in_features=100, out_features=10, bias=True)
+)
+Param name           Shape                          Type           
+----------------------------------------------------------------------
+fc1.weight           torch.Size([300, 784])         torch.float32  
+fc1.bias             torch.Size([300])              torch.float32  
+fc2.weight           torch.Size([100, 300])         torch.float32  
+fc2.bias             torch.Size([100])              torch.float32  
+fc3.weight           torch.Size([10, 100])          torch.float32  
+fc3.bias             torch.Size([10])               torch.float32  
+Test set: Average loss: 0.2336, Accuracy: 9828/10000 (98.28%)
+--- Initial training ---
+2020-06-02 06:41:51
+Using CUDA!
+LeNet(
+  (fc1): Linear(in_features=784, out_features=300, bias=True)
+  (fc2): Linear(in_features=300, out_features=100, bias=True)
+  (fc3): Linear(in_features=100, out_features=10, bias=True)
+)
+Param name           Shape                          Type           
+----------------------------------------------------------------------
+fc1.weight           torch.Size([300, 784])         torch.float32  
+fc1.bias             torch.Size([300])              torch.float32  
+fc2.weight           torch.Size([100, 300])         torch.float32  
+fc2.bias             torch.Size([100])              torch.float32  
+fc3.weight           torch.Size([10, 100])          torch.float32  
+fc3.bias             torch.Size([10])               torch.float32  
+Test set: Average loss: 0.2336, Accuracy: 9828/10000 (98.28%)
+--- Initial training ---
+2020-06-02 06:41:54
+Using CUDA!
+LeNet(
+  (fc1): Linear(in_features=784, out_features=300, bias=True)
+  (fc2): Linear(in_features=300, out_features=100, bias=True)
+  (fc3): Linear(in_features=100, out_features=10, bias=True)
+)
+Param name           Shape                          Type           
+----------------------------------------------------------------------
+fc1.weight           torch.Size([300, 784])         torch.float32  
+fc1.bias             torch.Size([300])              torch.float32  
+fc2.weight           torch.Size([100, 300])         torch.float32  
+fc2.bias             torch.Size([100])              torch.float32  
+fc3.weight           torch.Size([10, 100])          torch.float32  
+fc3.bias             torch.Size([10])               torch.float32  
+Test set: Average loss: 0.2336, Accuracy: 9828/10000 (98.28%)
+--- Initial training ---
+2020-06-02 06:41:57
+Using CUDA!
+2020-06-02 06:41:59
+Using CUDA!
+2020-06-02 06:42:02
+Using CUDA!
+2020-06-02 06:42:04
+Using CUDA!
+2020-06-02 06:42:07
+2020-06-02 06:42:07
+Using CUDA!
+LeNet(
+  (fc1): Linear(in_features=784, out_features=300, bias=True)
+  (fc2): Linear(in_features=300, out_features=100, bias=True)
+  (fc3): Linear(in_features=100, out_features=10, bias=True)
+)
+Param name           Shape                          Type           
+----------------------------------------------------------------------
+fc1.weight           torch.Size([300, 784])         torch.float32  
+fc1.bias             torch.Size([300])              torch.float32  
+fc2.weight           torch.Size([100, 300])         torch.float32  
+fc2.bias             torch.Size([100])              torch.float32  
+fc3.weight           torch.Size([10, 100])          torch.float32  
+fc3.bias             torch.Size([10])               torch.float32  
+Test set: Average loss: 0.2336, Accuracy: 9828/10000 (98.28%)
+--- Initial training ---
+Test set: Average loss: 0.2897, Accuracy: 9187/10000 (91.87%)
+2020-06-02 06:54:10
+Using CUDA!
+LeNet(
+  (fc1): Linear(in_features=784, out_features=300, bias=True)
+  (fc2): Linear(in_features=300, out_features=100, bias=True)
+  (fc3): Linear(in_features=100, out_features=10, bias=True)
+)
+Param name           Shape                          Type           
+----------------------------------------------------------------------
+fc1.weight           torch.Size([300, 784])         torch.float32  
+fc1.bias             torch.Size([300])              torch.float32  
+fc2.weight           torch.Size([100, 300])         torch.float32  
+fc2.bias             torch.Size([100])              torch.float32  
+fc3.weight           torch.Size([10, 100])          torch.float32  
+fc3.bias             torch.Size([10])               torch.float32  
+Test set: Average loss: 0.2336, Accuracy: 9828/10000 (98.28%)
+--- Initial training ---
+Test set: Average loss: 0.2293, Accuracy: 9334/10000 (93.34%)
+2020-06-02 07:06:07
+Using CUDA!
+LeNet(
+  (fc1): Linear(in_features=784, out_features=300, bias=True)
+  (fc2): Linear(in_features=300, out_features=100, bias=True)
+  (fc3): Linear(in_features=100, out_features=10, bias=True)
+)
+Param name           Shape                          Type           
+----------------------------------------------------------------------
+fc1.weight           torch.Size([300, 784])         torch.float32  
+fc1.bias             torch.Size([300])              torch.float32  
+fc2.weight           torch.Size([100, 300])         torch.float32  
+fc2.bias             torch.Size([100])              torch.float32  
+fc3.weight           torch.Size([10, 100])          torch.float32  
+fc3.bias             torch.Size([10])               torch.float32  
+Test set: Average loss: 0.2336, Accuracy: 9828/10000 (98.28%)
+--- Initial training ---
+Test set: Average loss: 0.1187, Accuracy: 9668/10000 (96.68%)
+2020-06-02 07:18:00
+Using CUDA!
+LeNet(
+  (fc1): Linear(in_features=784, out_features=300, bias=True)
+  (fc2): Linear(in_features=300, out_features=100, bias=True)
+  (fc3): Linear(in_features=100, out_features=10, bias=True)
+)
+Param name           Shape                          Type           
+----------------------------------------------------------------------
+fc1.weight           torch.Size([300, 784])         torch.float32  
+fc1.bias             torch.Size([300])              torch.float32  
+fc2.weight           torch.Size([100, 300])         torch.float32  
+fc2.bias             torch.Size([100])              torch.float32  
+fc3.weight           torch.Size([10, 100])          torch.float32  
+fc3.bias             torch.Size([10])               torch.float32  
+Test set: Average loss: 0.2336, Accuracy: 9828/10000 (98.28%)
+--- Initial training ---
+Test set: Average loss: 0.0962, Accuracy: 9706/10000 (97.06%)
+2020-06-02 07:30:07
+Using CUDA!
+--- Pruning ---
+Test set: Average loss: 0.3016, Accuracy: 9173/10000 (91.73%)
+fc1.weight           | nonzeros =   34446 /  235200 ( 14.65%) | total_pruned =  200754 | shape = (300, 784)
+fc1.weight           | dim0 =     784 /     784 (100.00%) | dim1 =     300 /     300 (100.00%)
+fc1.bias             | nonzeros =      54 /     300 ( 18.00%) | total_pruned =     246 | shape = (300,)
+fc2.weight           | nonzeros =    4393 /   30000 ( 14.64%) | total_pruned =   25607 | shape = (100, 300)
+fc2.weight           | dim0 =     300 /     300 (100.00%) | dim1 =     100 /     100 (100.00%)
+fc2.bias             | nonzeros =      12 /     100 ( 12.00%) | total_pruned =      88 | shape = (100,)
+fc3.weight           | nonzeros =     166 /    1000 ( 16.60%) | total_pruned =     834 | shape = (10, 100)
+fc3.weight           | dim0 =      81 /     100 ( 81.00%) | dim1 =      10 /      10 (100.00%)
+fc3.bias             | nonzeros =       2 /      10 ( 20.00%) | total_pruned =       8 | shape = (10,)
+alive: 39073, pruned : 227537, total: 266610, Compression rate :       6.82x  ( 85.34% pruned)
+--- Finetuning ---
+Test set: Average loss: 0.0934, Accuracy: 9742/10000 (97.42%)
+2020-06-02 07:34:38
+Using CUDA!
+--- Pruning ---
+Test set: Average loss: 0.2218, Accuracy: 9363/10000 (93.63%)
+fc1.weight           | nonzeros =   34473 /  235200 ( 14.66%) | total_pruned =  200727 | shape = (300, 784)
+fc1.weight           | dim0 =     784 /     784 (100.00%) | dim1 =     300 /     300 (100.00%)
+fc1.bias             | nonzeros =      47 /     300 ( 15.67%) | total_pruned =     253 | shape = (300,)
+fc2.weight           | nonzeros =    4532 /   30000 ( 15.11%) | total_pruned =   25468 | shape = (100, 300)
+fc2.weight           | dim0 =     300 /     300 (100.00%) | dim1 =     100 /     100 (100.00%)
+fc2.bias             | nonzeros =      18 /     100 ( 18.00%) | total_pruned =      82 | shape = (100,)
+fc3.weight           | nonzeros =     180 /    1000 ( 18.00%) | total_pruned =     820 | shape = (10, 100)
+fc3.weight           | dim0 =      83 /     100 ( 83.00%) | dim1 =      10 /      10 (100.00%)
+fc3.bias             | nonzeros =       3 /      10 ( 30.00%) | total_pruned =       7 | shape = (10,)
+alive: 39253, pruned : 227357, total: 266610, Compression rate :       6.79x  ( 85.28% pruned)
+--- Finetuning ---
+Test set: Average loss: 0.0878, Accuracy: 9759/10000 (97.59%)
+2020-06-02 07:39:15
+Using CUDA!
+--- Pruning ---
+Test set: Average loss: 0.1053, Accuracy: 9687/10000 (96.87%)
+fc1.weight           | nonzeros =   34711 /  235200 ( 14.76%) | total_pruned =  200489 | shape = (300, 784)
+fc1.weight           | dim0 =     784 /     784 (100.00%) | dim1 =     300 /     300 (100.00%)
+fc1.bias             | nonzeros =      50 /     300 ( 16.67%) | total_pruned =     250 | shape = (300,)
+fc2.weight           | nonzeros =    4435 /   30000 ( 14.78%) | total_pruned =   25565 | shape = (100, 300)
+fc2.weight           | dim0 =     300 /     300 (100.00%) | dim1 =     100 /     100 (100.00%)
+fc2.bias             | nonzeros =      14 /     100 ( 14.00%) | total_pruned =      86 | shape = (100,)
+fc3.weight           | nonzeros =     170 /    1000 ( 17.00%) | total_pruned =     830 | shape = (10, 100)
+fc3.weight           | dim0 =      82 /     100 ( 82.00%) | dim1 =      10 /      10 (100.00%)
+fc3.bias             | nonzeros =       2 /      10 ( 20.00%) | total_pruned =       8 | shape = (10,)
+alive: 39382, pruned : 227228, total: 266610, Compression rate :       6.77x  ( 85.23% pruned)
+--- Finetuning ---
+Test set: Average loss: 0.0889, Accuracy: 9788/10000 (97.88%)
+2020-06-02 07:44:18
+Using CUDA!
+2020-06-02 07:44:20
+2020-06-02 07:44:20
+Using CUDA!
+LeNet(
+  (fc1): Linear(in_features=784, out_features=300, bias=True)
+  (fc2): Linear(in_features=300, out_features=100, bias=True)
+  (fc3): Linear(in_features=100, out_features=10, bias=True)
+)
+Param name           Shape                          Type           
+----------------------------------------------------------------------
+fc1.weight           torch.Size([300, 784])         torch.float32  
+fc1.bias             torch.Size([300])              torch.float32  
+fc2.weight           torch.Size([100, 300])         torch.float32  
+fc2.bias             torch.Size([100])              torch.float32  
+fc3.weight           torch.Size([10, 100])          torch.float32  
+fc3.bias             torch.Size([10])               torch.float32  
+Test set: Average loss: 0.2336, Accuracy: 9828/10000 (98.28%)
+--- Initial training ---
+Test set: Average loss: 0.3941, Accuracy: 8811/10000 (88.11%)
+2020-06-02 07:57:00
+Using CUDA!
+LeNet(
+  (fc1): Linear(in_features=784, out_features=300, bias=True)
+  (fc2): Linear(in_features=300, out_features=100, bias=True)
+  (fc3): Linear(in_features=100, out_features=10, bias=True)
+)
+Param name           Shape                          Type           
+----------------------------------------------------------------------
+fc1.weight           torch.Size([300, 784])         torch.float32  
+fc1.bias             torch.Size([300])              torch.float32  
+fc2.weight           torch.Size([100, 300])         torch.float32  
+fc2.bias             torch.Size([100])              torch.float32  
+fc3.weight           torch.Size([10, 100])          torch.float32  
+fc3.bias             torch.Size([10])               torch.float32  
+Test set: Average loss: 0.2336, Accuracy: 9828/10000 (98.28%)
+--- Initial training ---

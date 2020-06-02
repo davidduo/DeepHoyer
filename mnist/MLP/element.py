@@ -9,6 +9,7 @@ import torch.nn.functional as F
 import torch.optim as optim
 from torchvision import datasets, transforms
 from tqdm import tqdm
+from copy import copy
 
 from net.models import LeNet
 import util
@@ -24,7 +25,7 @@ parser.add_argument('--test-batch-size', type=int, default=1000, metavar='N',
 parser.add_argument('--epochs', type=int, default=250, metavar='N',
                     help='number of epochs to train (default: 100)')
                     
-parser.add_argument('--reg', type=int, default=0, metavar='R',
+parser.add_argument('--reg_type', type=int, default=0, metavar='R',
                     help='regularization type: 0:None 1:L1 2:Hoyer 3:HS 4:Transformed L1')
 parser.add_argument('--decay', type=float, default=0.001, metavar='D',
                     help='weight decay for regularizer (default: 0.001)')
@@ -103,6 +104,27 @@ def train(epochs, decay=0, threshold=0.0):
                             reg += (torch.sum(torch.abs(param))**2)/torch.sum(param**2)
                         elif args.reg_type==4:    
                             reg += torch.sum(2*torch.abs(param)/(1+torch.abs(param)))
+                        elif args.reg_type==5:
+                            param_ = torch.tensor(param)
+                            param_.requires_grad = False
+                            p = 2.0/3.0
+                            reg += torch.pow(torch.sum(torch.pow(torch.abs(param),2) * torch.pow(torch.abs(param_),p-2)), 1)
+                        elif args.reg_type==6:
+                            #https://www.ece.uvic.ca/~andreas/JournalPapers/JKP-WSL-AA,Improved_Compessive_Sensing_Algorithms,TCASII14.pdf
+                            p = 2.0/3.0
+                            eps = 1e-6
+                            reg += torch.pow(torch.sum( torch.pow(torch.pow(torch.abs(param),2) + eps), p/2), 1)
+                        elif args.reg_type==7:
+                            param_ = torch.tensor(param)
+                            param_.requires_grad = False
+                            p = 1.0/2.0
+                            reg += torch.pow(torch.sum(torch.pow(torch.abs(param),2) * torch.pow(torch.abs(param_),p-2)), 1)
+                        elif args.reg_type==8:
+                            param_ = torch.tensor(param)
+                            param_.requires_grad = False
+                            p = 1.0/3.0
+                            reg += torch.pow(torch.sum(torch.pow(torch.abs(param),2) * torch.pow(torch.abs(param_),p-2)), 1)
+
                         else:
                             reg = 0.0         
             total_loss = loss+decay*reg
