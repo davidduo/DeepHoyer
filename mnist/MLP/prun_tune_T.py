@@ -9,6 +9,8 @@ import torch.nn.functional as F
 import torch.optim as optim
 from torchvision import datasets, transforms
 from tqdm import tqdm
+import matplotlib.pyplot as pyplot
+
 
 from net.models import LeNet
 import util
@@ -120,22 +122,65 @@ def test():
 
 
 model.load_state_dict(torch.load(args.model+'.pth'))
+util.print_nonzeros(model)
 
 print("------  MODEL  ------%s\n"%(args.model+'.pth'))
-# Initial training
-print("--- Pruning ---")
+
+def vis_tensor(tensor, str_):
+    tensor = tensor.reshape((-1))
+    pyplot.hist(tensor, 1000)
+    pyplot.title(str_)
+    pyplot.show()
+
+
+print("--- Statistics ---")
+tensors = np.array([])
 for name, p in model.named_parameters():
     if 'mask' in name:
         continue
     tensor = p.data.cpu().numpy()
-    new_mask = np.where(abs(tensor) < args.sensitivity, 0, tensor)
+    #vis_tensor(tensor, str_= name + '_before_pruning')
+
+
+
+# Initial training
+print("--- Pruning ---")
+tensors = np.array([])
+for name, p in model.named_parameters():
+    if 'mask' in name:
+        continue
+    tensor = p.data.cpu().numpy()
+    tensor_ = tensor.reshape((-1))
+    tensors = np.hstack((tensors, np.abs(tensor_)))
+threshold = np.percentile(tensors, 100-args.sensitivity)
+util.log(args.log, 'Pruning threshold: {}'.format(threshold))
+
+
+
+for name, p in model.named_parameters():
+    if 'mask' in name:
+        continue
+    tensor = p.data.cpu().numpy()
+    new_mask = np.where(abs(tensor) < threshold, 0, tensor)
     p.data = torch.from_numpy(new_mask).to(device)
+    #vis_tensor(new_mask, str_=name + '_after_pruning')
 
 accuracy = test()
 util.print_nonzeros(model)
 
-print("--- Finetuning ---")
+print("--- Begin Finetuning ---")
+util.log(args.log, f"--- Begin Finetuning ---")
 train(args.epochs)
-accuracy = test()
-torch.save(model.state_dict(), args.model+'_T_'+str(args.sensitivity)+'.pth')
 
+
+model_name = args.model+'_Sensitivity_'+str(args.sensitivity)+'.pth'
+torch.save(model.state_dict(), model_name)
+util.log(args.log, f"model saved path: {model_name}")
+
+
+accuracy = test()
+print(args.log, f"accuracy {accuracy}")
+util.log(args.log, f"accuracy {accuracy}")
+
+print("--- Finish  Finetuning ---\n")
+util.log(args.log, f"--- Finish  Finetuning ---")

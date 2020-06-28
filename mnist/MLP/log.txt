@@ -1,6 +1,2 @@
-initial_accuracy 95.26
-initial_accuracy 98.41
-initial_accuracy 93.02
-initial_accuracy 97.14
-initial_accuracy 97.42
-initial_accuracy 98.29
+--- Beging  Training ---
+--- Beging  Training ---
